@@ -1,0 +1,12 @@
+str(Luban)
+Luban$F <- factor(Luban$Color)
+Luban$out <- relevel(Luban$F, ref="2")
+library(nnet)
+mymodel <- multinom(out~ Age+Gender+edu+Height+Weight+Waist+BMI+Hip+WHR+SpO2+Bsys+Bdia+Drinks+Fastfood+BodyTemperature+PulseRate+Blooduricacid,data=Luban)
+summary(mymodel)
+predict(mymodel,Luban)
+library(AER)
+coeftest(mymodel)
+exp(coef(mymodel))
+
+install.packages("AER")
